@@ -20,6 +20,12 @@ gem install govuk-rspec-helpers
 
 You should also have already added `rspec`.
 
+Then add this to your `spec_helper.rb`:
+
+```ruby
+  require "govuk_rspec_helpers"
+```
+
 ## Using the helpers
 
 You can use the helpers to add expectations to either feature or request specs.
