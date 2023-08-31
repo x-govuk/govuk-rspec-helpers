@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-
-require_relative "lib/govuk_rspec_helpers"
+$LOAD_PATH.push File.expand_path("lib", __dir__)
+require "govuk_rspec_helpers"
 
 Gem::Specification.new do |spec|
   spec.name = "govuk-rspec-helpers"
