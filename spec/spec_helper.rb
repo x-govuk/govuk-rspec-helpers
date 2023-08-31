@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rspec/matchers/fail_matchers'
+require "govuk_rspec_helpers"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
