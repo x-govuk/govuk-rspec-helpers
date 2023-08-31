@@ -55,6 +55,7 @@ Add this code to expect a summary list to contain certain values, for example on
     text: "Change date of birth", href: "/dob"
   })
 end
+```
 
 This will test that:
 
