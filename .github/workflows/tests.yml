@@ -12,4 +12,4 @@ jobs:
         with:
           ruby-version: 3.2
       - name: Run tests
-        run: rspec
+        run: bundle exec rspec
