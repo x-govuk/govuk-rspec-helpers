@@ -33,7 +33,7 @@ RSpec::Matchers.define :summarise_errors do |expected|
   end
 
   def html
-    @html ||= Capybara::Node::Simple.new(actual.is_a?(String) ? actual : actual.to_html)
+    @html ||= Capybara::Node::Simple.new(actual.is_a?(String) ? actual : actual.html)
   end
 
   def title
