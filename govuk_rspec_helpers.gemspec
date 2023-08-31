@@ -20,4 +20,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "capybara", '>= 3.24'
+  spec.add_dependency "rspec", '~> 3.0'
+  spec.add_dependency "rspec-expectations"
 end
