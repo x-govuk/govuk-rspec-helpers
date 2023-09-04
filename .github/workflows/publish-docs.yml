@@ -30,7 +30,7 @@ jobs:
     - name: Use docs folder
       run: cd docs/ && ls
     - name: Install dependencies
-      run: npm ci
+      run: cd docs && npm ci
     - name: Build with Eleventy
       run: npm run-script build
     - name: Upload artifact
