@@ -1,0 +1,31 @@
+{
+  "name": "govuk-rspec-helpers-documentation",
+  "version": "0.0.1",
+  "description": "Documentation for govuk-rspec-helpers",
+  "keywords": [
+    "rspec"
+  ],
+  "homepage": "https://x-govuk.github.io/govuk-rspec-helpers/",
+  "bugs": {
+    "url": "https://github.com/x-govuk/govuk-rspec-helpers/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/x-govuk/govuk-rspec-helpers.git"
+  },
+  "scripts": {
+    "build": "eleventy --quiet",
+    "start": "eleventy --serve --quiet"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@x-govuk/govuk-eleventy-plugin": "^5.0.3"
+  },
+  "engines": {
+    "node": "^18"
+  }
+}
