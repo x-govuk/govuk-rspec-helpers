@@ -1,7 +1,14 @@
 # frozen_string_literal: true
-
+require 'capybara/rspec'
 require 'rspec/matchers/fail_matchers'
+
 require "govuk_rspec_helpers"
+
+
+require 'test_app'
+
+Capybara.app = TestApp
+
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
