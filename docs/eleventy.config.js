@@ -52,6 +52,5 @@ module.exports = function(eleventyConfig) {
     pathPrefix: process.env.GITHUB_ACTIONS
       ? '/govuk-rspec-helpers/'
       : '/'
-      }
   }
 };
