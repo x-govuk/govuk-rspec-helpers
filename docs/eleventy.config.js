@@ -48,6 +48,10 @@ module.exports = function(eleventyConfig) {
     dir: {
       // Use layouts from the plugin
       layouts: 'node_modules/@x-govuk/govuk-eleventy-plugin/layouts'
-    }
+    },
+    pathPrefix: process.env.GITHUB_ACTIONS
+      ? '/govuk-rspec-helpers/'
+      : '/'
+      }
   }
 };
