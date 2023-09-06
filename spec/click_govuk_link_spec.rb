@@ -220,4 +220,16 @@ RSpec.describe "click_govuk_link", type: :feature do
     end
   end
 
+  context "where the link is styled as a button" do
+    before do
+      TestApp.body = '<p><a href="/success" class="govuk-button" role="button" data-module="govuk-button">Continue</a>'
+      visit('/')
+    end
+
+    it 'should raise an error' do
+      expect {
+        click_govuk_link('Continue')
+      }.to raise_error('The link was found, but is styled as a button. Use `click_govuk_button` instead.')
+    end
+  end
 end

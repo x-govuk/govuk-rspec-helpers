@@ -33,6 +33,10 @@ def click_govuk_link(link_text)
 
   link_classes = link[:class].to_s.split(/\s/).collect(&:strip)
 
+  if link_classes.include?('govuk-button')
+    raise "The link was found, but is styled as a button. Use `click_govuk_button` instead."
+  end
+
   if link_classes.any? {|link_class| valid_link_classes.include?(link_class) }
     link.click
   elsif link_classes.empty?
