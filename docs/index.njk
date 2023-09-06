@@ -6,17 +6,15 @@ title: GOV.UK RSpec helpers
 description: A set of helpers to make it easier to test GOV.UK services using the RSpec framework
 startButton:
   href: /get-started
+content: |
+  ## Expecting content
+
+  * [Error summaries](summarise-errors)
+  * [Summary list](summarise)
 ---
 <div class="govuk-grid-row">
   <section class="govuk-grid-column-two-thirds-from-desktop">
-
-  <h2 class="govuk-heading-m">Expecting content</h2>
-
-  <ul class="govuk-list">
-    <li><a href="/summarise-errors">Error summaries</a></li>
-    <li><a href="/summarise">Summary lists</a></li>
-  </ul>
-
+  {{ content | markdown }}
   </section>
   <section class="govuk-grid-column-full">
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">
