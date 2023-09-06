@@ -257,4 +257,17 @@ RSpec.describe "click_govuk_link", type: :feature do
       }.to raise_error('The link was found, but is set to open in a new tab. Either remove this, or add "(opens in new tab)" to the link text')
     end
   end
+
+  context "where the link contains a button" do
+    before do
+      TestApp.body = '<p><a href="/success" class="govuk-link"><button>Continue</button></a>'
+      visit('/')
+    end
+
+    it 'should raise an error' do
+      expect {
+        click_govuk_link('Continue')
+      }.to raise_error('The link was found, but it contains a button – use either a link or button but not both')
+    end
+  end
 end
