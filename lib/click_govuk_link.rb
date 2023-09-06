@@ -37,6 +37,10 @@ def click_govuk_link(link_text)
     raise "The link was found, but is styled as a button. Use `click_govuk_button` instead."
   end
 
+  if link[:target] == "_blank" && !link_text.include?("opens in new tab")
+    raise "The link was found, but is set to open in a new tab. Either remove this, or add \"(opens in new tab)\" to the link text"
+  end
+
   if link_classes.any? {|link_class| valid_link_classes.include?(link_class) }
     link.click
   elsif link_classes.empty?

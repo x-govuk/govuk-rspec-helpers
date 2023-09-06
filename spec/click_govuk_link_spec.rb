@@ -232,4 +232,29 @@ RSpec.describe "click_govuk_link", type: :feature do
       }.to raise_error('The link was found, but is styled as a button. Use `click_govuk_button` instead.')
     end
   end
+
+  context "where the link is set to open in a new tab and mention this in link text" do
+    before do
+      TestApp.body = '<p><a href="/success" class="govuk-link" target="_blank">Guidance<span class="govuk-visually-hidden"> (opens in new tab)</span></a>'
+      visit('/')
+    end
+
+    it 'should take user to the linked page' do
+      click_govuk_link('Guidance (opens in new tab)')
+      expect(page.current_path).to eql("/success")
+    end
+  end
+
+  context "where the link is set to open in a new tab but doesn’t mention this" do
+    before do
+      TestApp.body = '<p><a href="/success" class="govuk-link" target="_blank">Guidance</a>'
+      visit('/')
+    end
+
+    it 'should raise an error' do
+      expect {
+        click_govuk_link('Guidance')
+      }.to raise_error('The link was found, but is set to open in a new tab. Either remove this, or add "(opens in new tab)" to the link text')
+    end
+  end
 end
