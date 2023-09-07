@@ -183,15 +183,27 @@ RSpec.describe "click_govuk_link", type: :feature do
 
   context "where a link contains visually-hidden text" do
     before do
-      TestApp.body = '<a href="/success" class="govuk-link">Change<span class="govuk-visually-hidden"> date of birth</span></a>'
+      TestApp.body = '<a href="/success" class="govuk-link">Change
+      <span class="govuk-visually-hidden"> date
+      of birth </span></a>'
       visit('/')
     end
 
-    it 'should raise an error if the visually-hidden text isn’t included' do
-      expect {
-        click_govuk_link('Change')
-      }.to raise_error('Unable to find link "Change" but did find link with the text "Change date of birth" - include the full link text including any visually-hidden text')
+    context "and the visually-hidden text isn’t include" do
+      it 'should raise an error' do
+        expect {
+          click_govuk_link('Change')
+        }.to raise_error('Unable to find link "Change" but did find link with the text "Change date of birth" - include the full link text including any visually-hidden text')
+      end
     end
+
+    context "and the full text is included" do
+      it 'should take user to the linked page' do
+        click_govuk_link('Change date of birth')
+        expect(page.current_path).to eql("/success")
+      end
+    end
+
   end
 
   context "where there are multiple links with the same text" do
