@@ -4,7 +4,7 @@ def click_govuk_link(link_text)
 
   ambiguous_link_texts = ["Change", "Add", "Remove"]
 
-  links = all('a', text: link_text, exact_text: true)
+  links = all('a', text: link_text, exact_text: true, normalize_ws: true)
 
   if links.size == 0
     links_without_exact_match = all('a', text: link_text)
