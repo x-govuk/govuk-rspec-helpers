@@ -1,4 +1,4 @@
-module GovukRspecHelpers
+module GovukRSpecHelpers
   module SummariseErrorsMatcher
 
     extend RSpec::Matchers::DSL

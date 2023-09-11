@@ -1,4 +1,4 @@
-module GovukRspecHelpers
+module GovukRSpecHelpers
   class ClickLink
 
     attr_reader :link_text, :page
