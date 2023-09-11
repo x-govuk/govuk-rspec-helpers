@@ -31,6 +31,14 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
       end
     end
 
+    context "and the name of the input is used" do
+      it 'should raise an error' do
+        expect {
+          fill_in_govuk_field("eventName", with: "Design System Day")
+        }.to raise_error('Use the full label text "What is the name of the event?" instead of the field name')
+      end
+    end
+
     context "and a hint is is specified" do
       it 'should raise an error' do
         expect {
