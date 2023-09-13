@@ -1,5 +1,5 @@
 module GovukRSpecHelpers
-  class FillInGovUKField
+  class FillInGovUKTextField
 
     attr_reader :page, :label, :hint, :with
 
@@ -135,8 +135,8 @@ module GovukRSpecHelpers
 
   end
 
-  def fill_in_govuk_field(label, hint: nil, with:)
-    FillInGovUKField.new(page:, label:, hint:, with:).fill_in
+  def fill_in_govuk_text_field(label, hint: nil, with:)
+    FillInGovUKTextField.new(page:, label:, hint:, with:).fill_in
   end
 
   RSpec.configure do |rspec|

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require "spec_helper"
 
-RSpec.describe "fill_in_govuk_field", type: :feature do
+RSpec.describe "fill_in_govuk_text_field", type: :feature do
 
   context "where the input is correctly associated with a label" do
     before do
@@ -18,7 +18,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     context "and the full label is specified" do
       it 'should be successful' do
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
         expect(page.find_field("What is the name of the event?").value).to eql("Design System Day")
       end
     end
@@ -26,7 +26,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
     context "and a partial label is specified" do
       it 'should raise an error' do
         expect {
-          fill_in_govuk_field("What is the name", with: "Design System Day")
+          fill_in_govuk_text_field("What is the name", with: "Design System Day")
         }.to raise_error('Unable to find label with the text "What is the name" but did find label with the text "What is the name of the event?" - use the full label text')
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
     context "and the name of the input is used" do
       it 'should raise an error' do
         expect {
-          fill_in_govuk_field("eventName", with: "Design System Day")
+          fill_in_govuk_text_field("eventName", with: "Design System Day")
         }.to raise_error('Use the full label text "What is the name of the event?" instead of the field name')
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
     context "and a hint is is specified" do
       it 'should raise an error' do
         expect {
-        fill_in_govuk_field("What is the name of the event?", hint: "The name you’ll use on promotional material", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", hint: "The name you’ll use on promotional material", with: "Design System Day")
         }.to raise_error('Found the field but could not find the hint "The name you’ll use on promotional material"')
       end
     end
@@ -63,7 +63,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     it 'should raise an error' do
       expect {
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
       }.to raise_error('Found the label but it is missing a "for" attribute to associate it with an input')
     end
   end
@@ -83,7 +83,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     it 'should raise an error' do
       expect {
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
       }.to raise_error('Found the label but it is missing a "for" attribute to associate it with an input')
     end
   end
@@ -103,7 +103,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     it 'should raise an error' do
       expect {
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
       }.to raise_error('Found the label but there is no field with the ID "event-name" which matches the label‘s "for" attribute')
     end
   end
@@ -124,7 +124,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     it 'should raise an error' do
       expect {
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
       }.to raise_error('Found the label but there there are 2 elements with the ID "event-name" which matches the label‘s "for" attribute')
     end
   end
@@ -144,7 +144,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     it 'should raise an error' do
       expect {
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
       }.to raise_error('Found the label but but it is associated with a <div> element instead of a form field')
     end
   end
@@ -167,14 +167,14 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     context "and the label is specified but the hint isn’t" do
       it "should be successful" do
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
         expect(page.find_field("What is the name of the event?").value).to eql("Design System Day")
       end
     end
 
     context "and the label and the hint are specified" do
       it "should be successful" do
-        fill_in_govuk_field("What is the name of the event?", hint: "The name you’ll use on promotional material", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", hint: "The name you’ll use on promotional material", with: "Design System Day")
         expect(page.find_field("What is the name of the event?").value).to eql("Design System Day")
       end
     end
@@ -182,7 +182,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
     context "and a different hint is specified" do
       it "should be raise an error" do
         expect {
-          fill_in_govuk_field("What is the name of the event?", hint: "Make it a catchy name", with: "Design System Day")
+          fill_in_govuk_text_field("What is the name of the event?", hint: "Make it a catchy name", with: "Design System Day")
         }.to raise_error('Found the label but the associated hint is "The name you’ll use on promotional material" not "Make it a catchy name"')
       end
     end
@@ -206,7 +206,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     it "should raise an error" do
       expect {
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
       }.to raise_error('Found the field but it has an "aria-describedby=event-name-hint" attribute and no hint with that ID exists')
     end
   end
@@ -232,7 +232,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     it "should raise an error" do
       expect {
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
       }.to raise_error('Found the field but it has an "aria-describedby=event-name-hint" attribute and 2 elements with that ID exist')
     end
   end
@@ -256,7 +256,7 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
     context "and the hint is specified" do
       it "should raise an error" do
         expect {
-          fill_in_govuk_field("What is the name of the event?", hint: "The name you’ll use on promotional material", with: "Design System Day")
+          fill_in_govuk_text_field("What is the name of the event?", hint: "The name you’ll use on promotional material", with: "Design System Day")
         }.to raise_error('Found the field and the hint, but not field is not associated with the hint using aria-describedby')
       end
     end
@@ -283,14 +283,14 @@ RSpec.describe "fill_in_govuk_field", type: :feature do
 
     context "and the just the label is specified" do
       it 'should be successful' do
-        fill_in_govuk_field("What is the name of the event?", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", with: "Design System Day")
         expect(page.find_field("What is the name of the event?").value).to eql("Design System Day")
       end
     end
 
     context "and the the label and hint are specified" do
       it 'should be successful' do
-        fill_in_govuk_field("What is the name of the event?", hint: "The name you’ll use on promotional material", with: "Design System Day")
+        fill_in_govuk_text_field("What is the name of the event?", hint: "The name you’ll use on promotional material", with: "Design System Day")
         expect(page.find_field("What is the name of the event?").value).to eql("Design System Day")
       end
     end
