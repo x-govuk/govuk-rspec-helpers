@@ -1,11 +1,12 @@
 module GovukRSpecHelpers
   class ClickButton
 
-    attr_reader :page, :button_text
+    attr_reader :page, :button_text, :disabled
 
-    def initialize(page:, button_text:)
+    def initialize(page:, button_text:, disabled: false)
       @page = page
       @button_text = button_text
+      @disabled = disabled
     end
 
     def click
@@ -26,6 +27,7 @@ module GovukRSpecHelpers
 
       check_data_module_attribute_is_present
       check_role_is_present_if_button_is_a_link
+      check_if_button_is_disabled
       check_for_govuk_class
 
       @button.click
@@ -59,6 +61,22 @@ module GovukRSpecHelpers
       end
     end
 
+    def check_if_button_is_disabled
+      button_classes = @button[:class].to_s.split(/\s/).collect(&:strip)
+
+      if @button["disabled"] == "disabled" && !disabled
+        raise "Button is disabled. Avoid using disabled buttons as they have poor contrast and can confuse users. If this is unavoidable, use click_govuk_button(\"#{button_text}\", disabled: true)"
+      end
+
+      if disabled && !button_classes.include?('govuk-button--disabled')
+        raise "Disabled button is missing the govuk-button--disabled class"
+      end
+
+      if disabled && @button["aria-disabled"].to_s != "true"
+        raise 'Disabled button is missing aria-disabled="true"'
+      end
+    end
+
     def check_for_govuk_class
       button_classes = @button[:class].to_s.split(/\s/).collect(&:strip)
       if button_classes.empty?
@@ -70,8 +88,8 @@ module GovukRSpecHelpers
 
   end
 
-  def click_govuk_button(button_text)
-    ClickButton.new(page: page, button_text: button_text).click
+  def click_govuk_button(button_text, disabled: false)
+    ClickButton.new(page: page, button_text: button_text, disabled: disabled).click
   end
 
   RSpec.configure do |rspec|

@@ -132,5 +132,57 @@ RSpec.describe "click_govuk_button", type: :feature do
     end
   end
 
+  context "where the button is disabled" do
+    before do
+      TestApp.body = '<form action="/success" method="post"><button disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" data-module="govuk-button">
+        Submit
+      </button></form>'
+      visit('/')
+    end
 
+    context "and disabled wasn’t specified" do
+      it 'should raise an error' do
+        expect {
+          click_govuk_button('Submit')
+        }.to raise_error('Button is disabled. Avoid using disabled buttons as they have poor contrast and can confuse users. If this is unavoidable, use click_govuk_button("Submit", disabled: true)')
+      end
+    end
+
+    context "and disabled was specified" do
+      it 'should follow the link' do
+        click_govuk_button('Submit', disabled: true)
+        expect(page.current_path).to eql("/success")
+      end
+    end
+  end
+
+  context "where the button is disabled but the modifier class is missing" do
+    before do
+      TestApp.body = '<form action="/success" method="post"><button disabled="disabled" aria-disabled="true" class="govuk-button" data-module="govuk-button">
+        Submit
+      </button></form>'
+      visit('/')
+    end
+
+    it 'should raise an error' do
+      expect {
+        click_govuk_button('Submit', disabled: true)
+      }.to raise_error('Disabled button is missing the govuk-button--disabled class')
+    end
+  end
+
+  context "where the button is disabled but aria-disabled is missing" do
+    before do
+      TestApp.body = '<form action="/success" method="post"><button disabled="disabled" class="govuk-button govuk-button--disabled" data-module="govuk-button">
+        Submit
+      </button></form>'
+      visit('/')
+    end
+
+    it 'should raise an error' do
+      expect {
+        click_govuk_button('Submit', disabled: true)
+      }.to raise_error('Disabled button is missing aria-disabled="true"')
+    end
+  end
 end
