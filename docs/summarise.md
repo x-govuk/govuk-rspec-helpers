@@ -1,7 +1,7 @@
 ---
 title: Summary lists
 layout: sub-navigation
-order: 4
+order: 5
 ---
 
 Use this helper to test that the [Summary list component](https://design-system.service.gov.uk/components/summary-list/) is visible on the page with the correct content, for example on a Check your answers page.
