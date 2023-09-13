@@ -31,7 +31,7 @@ module GovukRSpecHelpers
       check_if_button_is_disabled
       check_for_govuk_class
 
-      @button.click
+      @button.click unless disabled
     end
 
   private

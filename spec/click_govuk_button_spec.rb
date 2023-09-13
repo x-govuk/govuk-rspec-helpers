@@ -162,9 +162,9 @@ RSpec.describe "click_govuk_button", type: :feature do
     end
 
     context "and disabled was specified" do
-      it 'should follow the link' do
+      it 'should not follow the link' do
         click_govuk_button('Submit', disabled: true)
-        expect(page.current_path).to eql("/success")
+        expect(page.current_path).to eql("/")
       end
     end
   end
