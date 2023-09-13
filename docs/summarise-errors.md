@@ -1,7 +1,7 @@
 ---
 title: Error summaries
 layout: sub-navigation
-order: 4
+order: 5
 ---
 
 Use this helper to test that the [Error summary component](https://design-system.service.gov.uk/components/error-summary/) is visible on the page with the correct content.
