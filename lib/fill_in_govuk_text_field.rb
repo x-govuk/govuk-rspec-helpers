@@ -33,6 +33,7 @@ module GovukRSpecHelpers
       @input = @inputs.first
 
       check_associated_element_is_a_form_field
+      check_input_type_is_text
 
       aria_described_by_ids = @input["aria-describedby"].to_s.strip.split(/\s+/)
 
@@ -101,6 +102,10 @@ module GovukRSpecHelpers
       if !['input', 'textarea', 'select'].include?(@input.tag_name)
         raise "Found the label but but it is associated with a <#{@input.tag_name}> element instead of a form field"
       end
+    end
+
+    def check_input_type_is_text
+      raise "Found the field, but it has type=\"#{@input[:type]}\", expected type=\"text\"" unless @input[:type] == "text"
     end
 
     def check_field_is_described_by_a_hint

@@ -294,5 +294,23 @@ RSpec.describe "fill_in_govuk_text_field", type: :feature do
         expect(page.find_field("What is the name of the event?").value).to eql("Design System Day")
       end
     end
+
+    context "where the input has type=email" do
+      before do
+        TestApp.body = '<form action="/success" method="post"><div class="govuk-form-group">
+    <label class="govuk-label" for="email">
+      Email address
+    </label>
+    <input class="govuk-input" id="email" name="email" type="email" spellcheck="false" autocomplete="email">
+  </div></form>'
+        visit('/')
+      end
+
+      it 'should raise an error' do
+        expect {
+          fill_in_govuk_text_field("Email address", with: "test@example.com")
+        }.to raise_error('Found the field, but it has type="email", expected type="text"')
+      end
+    end
   end
 end
