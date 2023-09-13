@@ -27,6 +27,7 @@ module GovukRSpecHelpers
 
       check_data_module_attribute_is_present
       check_role_is_present_if_button_is_a_link
+      check_button_is_not_draggable_if_button_is_a_link
       check_if_button_is_disabled
       check_for_govuk_class
 
@@ -58,6 +59,12 @@ module GovukRSpecHelpers
     def check_role_is_present_if_button_is_a_link
       if @button.tag_name == 'a' && @button["role"] != "button"
         raise "Button found, but `role=\"button\"` is missing, this is needed on links styled as buttons"
+      end
+    end
+
+    def check_button_is_not_draggable_if_button_is_a_link
+      if @button.tag_name == 'a' && @button["draggable"] != "false"
+        raise "Button found, but `draggable=\"false\"` is missing, this is needed on links styled as buttons"
       end
     end
 
