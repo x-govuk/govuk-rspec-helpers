@@ -16,6 +16,10 @@ module GovukRSpecHelpers
         @buttons = page.all('a.govuk-button', text: button_text, exact_text: true)
       end
 
+      if @buttons.empty?
+        @buttons = page.all("input[type=submit][value=\"#{Capybara::Selector::CSS.escape(button_text)}\"]")
+      end
+
       if @buttons.size == 0
         check_for_inexact_match
         raise "Unable to find button \"#{button_text}\""
