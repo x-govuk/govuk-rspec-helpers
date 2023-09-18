@@ -30,6 +30,18 @@ RSpec.describe "click_govuk_button", type: :feature do
     end
   end
 
+  context "where there is an input with type=submit" do
+    before do
+      TestApp.body = '<form action="/success" method="post"><input type="submit" class="govuk-button" data-module="govuk-button" value="Continue" /></form>'
+      visit('/')
+    end
+
+    it 'should submit the form' do
+      click_govuk_button('Continue')
+      expect(page.current_path).to eql("/success")
+    end
+  end
+
   context "where there are 2 buttons with the same text" do
     before do
       TestApp.body = '<button>Continue</button> <button>Continue</button>'
