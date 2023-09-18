@@ -1,5 +1,5 @@
 ---
-title: Clicking links
+title: Links
 layout: sub-navigation
 order: 3
 ---

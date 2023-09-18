@@ -1,5 +1,5 @@
 ---
-title: Fill in a text field
+title: Text fields
 layout: sub-navigation
 order: 4
 ---

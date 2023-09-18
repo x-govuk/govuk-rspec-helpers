@@ -1,5 +1,5 @@
 ---
-title: Clicking buttons
+title: Buttons
 layout: sub-navigation
 order: 2
 ---
