@@ -1,10 +1,11 @@
 module GovukRSpecHelpers
   class ChooseGovukRadio
 
-    attr_reader :page, :label_text
+    attr_reader :page, :label_text, :hint_text
 
-    def initialize(page:, label_text:)
+    def initialize(page:, label_text:, hint_text:)
       @label_text = label_text
+      @hint_text = hint_text
       @page = page
     end
 
@@ -19,7 +20,19 @@ module GovukRSpecHelpers
 
       @label = labels.first
 
+      inputs_matching_label = page.all(id: @label[:for])
+
+      if inputs_matching_label.size == 1
+        @input = inputs_matching_label.first
+      end
+
       check_that_fieldset_legend_was_specified
+
+      if hint_text
+        check_for_hint
+        check_that_hint_is_associated_with_input
+      end
+
 
       @label.click
     end
@@ -51,10 +64,37 @@ module GovukRSpecHelpers
       end
     end
 
+    def check_for_hint
+      radio_item = @label.ancestor('.govuk-radios__item')
+
+      hints = radio_item.all('.govuk-hint', text: hint_text, exact_text: true, normalize_ws: true)
+
+      if hints.size == 0
+        other_hints = radio_item.all('.govuk-hint')
+
+        if other_hints.size > 0
+          raise "Found radio but could not find matching hint. Found the hint \"#{other_hints.first.text}\" instead"
+        end
+      end
+
+      @hint = hints.first
+    end
+
+    def check_that_hint_is_associated_with_input
+      hint_id = @hint[:id]
+
+      if hint_id.to_s.strip == ""
+        raise "Found radio and hint, but the hint is not associated with the input using aria. And an ID to the hint and Add aria-describedby= to the input with that ID."
+      end
+
+      if !@input["aria-describedby"].to_s.split(/\s+/).include?(hint_id)
+        raise "Found radio and hint, but the hint is not associated with the input using aria. Add aria-describedby=#{hint_id} to the input."
+      end
+    end
   end
 
-  def choose_govuk_radio(label_text)
-    ChooseGovukRadio.new(page: page, label_text: label_text).choose
+  def choose_govuk_radio(label_text, hint: nil)
+    ChooseGovukRadio.new(page: page, label_text: label_text, hint_text: hint).choose
   end
 
   RSpec.configure do |rspec|
