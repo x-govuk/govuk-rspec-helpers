@@ -2,30 +2,29 @@
 homepage: true
 layout: product
 includeInBreadcrumbs: true
-title: GOV.UK RSpec helpers
-description: A set of helpers to make it easier to test GOV.UK services using the RSpec framework
+title: Test GOV.UK services using the RSpec framework
+description: This library provides a set of helpers to test government services against GOV.UK Design System recommendations.
 image:
   src: /assets/homepage-illustration.svg
   alt: Illustration of an interface on a laptop screen, from which dotted lines emerge and enter a command line where a green checkmark and red cross are displayed.
 startButton:
   href: /get-started
-content: |
-  ## Navigating and filling in forms
-
-  * [Buttons](click-govuk-button)
-  * [Fieldsets](within-fieldsets)
-  * [Links](click-govuk-link)
-  * [Radio options](choosing-radio-options)
-  * [Text fields](fill_in_govuk_text_field)
-
-  ## Expecting content
-
-  * [Error summaries](summarise-errors)
-  * [Summary list](summarise)
 ---
 <div class="govuk-grid-row">
   <section class="govuk-grid-column-two-thirds-from-desktop">
-  {{ content | markdown }}
+    <h2 class="govuk-heading-m govuk-!-font-size-27">Navigating and filling in forms</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="click-govuk-button">Buttons</a></li>
+      <li><a class="govuk-link" href="within-fieldsets">Fieldsets</a></li>
+      <li><a class="govuk-link" href="click-govuk-link">Links</a></li>
+      <li><a class="govuk-link" href="choosing-radio-options">Radio options</a></li>
+      <li><a class="govuk-link" href="fill_in_govuk_text_field">Text fields</a></li>
+    </ul>
+    <h2 class="govuk-heading-m govuk-!-font-size-27">Expecting content</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="summarise-errors">Error summaries</a></li>
+      <li><a class="govuk-link" href="summarise">Summary lists</a></li>
+    </ul>
   </section>
   <section class="govuk-grid-column-full">
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl govuk-!-margin-top-0">

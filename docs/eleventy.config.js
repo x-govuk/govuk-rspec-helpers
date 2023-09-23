@@ -11,7 +11,7 @@ module.exports = function(eleventyConfig) {
       touch: 'https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-apple-touch-icon.png'
     },
     opengraphImageUrl: 'https://x-govuk.github.io/govuk-rspec-helpers/assets/opengraph-image.png',
-    homeKey: 'GOV.UK RSpec helpers',
+    homeKey: 'GOV.UK RSpec Helpers',
     parentSite: {
       url: 'https://x-govuk.github.io/#projects',
       name: 'X-GOVUK projects'
@@ -22,7 +22,7 @@ module.exports = function(eleventyConfig) {
     header: {
       organisationLogo: 'x-govuk',
       organisationName: 'X-GOVUK',
-      productName: 'RSpec helpers',
+      productName: 'RSpec Helpers',
       search: {
         indexPath: '/search.json',
         sitemapPath: '/sitemap'
