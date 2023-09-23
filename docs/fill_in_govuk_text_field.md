@@ -1,7 +1,7 @@
 ---
 title: Text fields
 layout: sub-navigation
-order: 4
+order: 6
 ---
 
 This helper is a drop-in replacement for the standard `fill_in` helper, which adds some additional usability and accessibility checks.

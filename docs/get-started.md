@@ -1,9 +1,8 @@
 ---
 layout: sub-navigation
-order: 1
 title: Get started
+order: 1
 ---
-
 
 ## Requirements
 
@@ -23,5 +22,5 @@ gem install govuk-rspec-helpers
 Add this to your `spec_helper.rb`:
 
 ```ruby
-  require "govuk_rspec_helpers"
+require "govuk_rspec_helpers"
 ```

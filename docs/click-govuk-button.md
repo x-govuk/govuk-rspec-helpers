@@ -13,19 +13,19 @@ Use this within tests that fill in forms across multiple pages.
 Here’s a simple example:
 
 ```ruby
-  scenario "Completing the form" do
-    visit "/"
+scenario "Completing the form" do
+  visit "/"
 
-    click_govuk_button "Start now"
+  click_govuk_button "Start now"
 
-    fill_in "Name", with: "Jane Smith"
-    click_govuk_button "Continue"
+  fill_in "Name", with: "Jane Smith"
+  click_govuk_button "Continue"
 
-    fill_in "Email address", with: "jane@example.com"
-    click_govuk_button "Continue"
+  fill_in "Email address", with: "jane@example.com"
+  click_govuk_button "Continue"
 
-    expect(page).to have_content("Check your answers")
-  end
+  expect(page).to have_content("Check your answers")
+end
 ```
 
 The helper will check that:
@@ -43,10 +43,10 @@ Disabled buttons are [strongly discouraged](https://design-system.service.gov.uk
 If you really need to use disabled buttons, or have some user research showing it makes your service easier to understand, you can use the helper to click these by adding `disabled: true`. Clicking disabled buttons will not submit a form.
 
 ```ruby
-  scenario "Clicking a disabled button" do
-    visit('/')
-    click_govuk_button "Send application", disabled: true
+scenario "Clicking a disabled button" do
+  visit('/')
+  click_govuk_button "Send application", disabled: true
 
-    expect(page.current_path).to eql("/")
-  end
+  expect(page.current_path).to eql("/")
+end
 ```
