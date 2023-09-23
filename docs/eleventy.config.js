@@ -10,7 +10,7 @@ module.exports = function(eleventyConfig) {
       shortcut: 'https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-favicon.ico',
       touch: 'https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-apple-touch-icon.png'
     },
-    opengraphImageUrl: 'https://x-govuk.github.io/govuk-prototype-filters/assets/opengraph-image.png',
+    opengraphImageUrl: 'https://x-govuk.github.io/govuk-rspec-helpers/assets/opengraph-image.png',
     homeKey: 'GOV.UK RSpec helpers',
     parentSite: {
       url: 'https://x-govuk.github.io/#projects',
@@ -40,6 +40,9 @@ module.exports = function(eleventyConfig) {
       }
     }
   })
+
+  // Passthrough
+  eleventyConfig.addPassthroughCopy('./assets')
 
   return {
     dataTemplateEngine: 'njk',
