@@ -1,7 +1,7 @@
 ---
 title: Radio options
 layout: sub-navigation
-order: 5
+order: 7
 ---
 
 This helper is a drop-in replacement for the standard `choose` helper which adds some additional usability and accessibility checks.
