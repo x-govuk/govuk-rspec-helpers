@@ -366,7 +366,7 @@ RSpec.describe "checking a chekcbox", type: :feature do
   context "where there are 2 elements with a matching ID" do
     before do
        TestApp.body = '<div class="govuk-checkboxes__item" id="whereDoYouLive">
-        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="whereDoYouLive" type="checkbox" value="england">
         <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
           England
         </label>
@@ -378,6 +378,24 @@ RSpec.describe "checking a chekcbox", type: :feature do
       expect {
         check_govuk_checkbox "England"
       }.to raise_error('Found 2 elements with id="whereDoYouLive". IDs must be unique.')
+    end
+  end
+
+  context "where the checkbox is already checked" do
+    before do
+       TestApp.body = '<div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="whereDoYouLive" type="checkbox" value="england" checked>
+        <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
+          England
+        </label>
+      </div>'
+      visit('/')
+    end
+
+    it "should raise an error" do
+      expect {
+        check_govuk_checkbox "England"
+      }.to raise_error('Found checkbox, but it was already checked')
     end
   end
 

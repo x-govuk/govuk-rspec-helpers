@@ -1,5 +1,5 @@
 module GovukRSpecHelpers
-  class CheckGovukCheckbox
+  class GovukCheckbox
 
     attr_reader :page, :label_text, :hint_text
 
@@ -9,7 +9,17 @@ module GovukRSpecHelpers
       @page = page
     end
 
-    def choose
+    def check
+      set_checked(true)
+    end
+
+    def uncheck
+      set_checked(false)
+    end
+
+    private
+
+    def set_checked(checked)
       labels = page.all('label', text: label_text, exact_text: true, normalize_ws: true)
 
       if labels.size == 0
@@ -46,11 +56,11 @@ module GovukRSpecHelpers
 
       check_for_hint if hint_text
       check_that_hint_is_associated_with_input if @hint
+      check_that_checkbox_not_checked if checked
+      check_that_checkbox_is_checked if !checked
 
       @label.click
     end
-
-    private
 
     def check_for_input_id_match
       inputs = page.all('input', id: label_text)
@@ -128,10 +138,26 @@ module GovukRSpecHelpers
       end
     end
 
+    def check_that_checkbox_not_checked
+      if @input[:checked]
+        raise "Found checkbox, but it was already checked"
+      end
+    end
+
+    def check_that_checkbox_is_checked
+      if !@input[:checked]
+        raise "Found checkbox, but it was already unchecked"
+      end
+    end
+
   end
 
   def check_govuk_checkbox(label_text, hint: nil)
-    CheckGovukCheckbox.new(page: page, label_text: label_text, hint_text: hint).choose
+    GovukCheckbox.new(page: page, label_text: label_text, hint_text: hint).check
+  end
+
+  def uncheck_govuk_checkbox(label_text, hint: nil)
+    GovukCheckbox.new(page: page, label_text: label_text, hint_text: hint).uncheck
   end
 
   RSpec.configure do |rspec|
