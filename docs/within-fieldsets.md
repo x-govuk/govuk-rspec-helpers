@@ -1,7 +1,7 @@
 ---
 title: Fieldsets
 layout: sub-navigation
-order: 3
+order: 5
 ---
 
 This helper is a drop-in replacement for the standard `within_fieldset` helper which adds some additional usability and accessibility checks.
