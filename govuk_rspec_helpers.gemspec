@@ -3,7 +3,7 @@ $LOAD_PATH.push File.expand_path("lib", __dir__)
 
 Gem::Specification.new do |spec|
   spec.name = "govuk-rspec-helpers"
-  spec.version = 0.1
+  spec.version = "0.2a"
   spec.authors = ["Frankie Roberto"]
   spec.email = ["frankie@frankieroberto.com"]
 
