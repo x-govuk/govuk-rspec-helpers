@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk-rspec-helpers (0.1)
+    govuk-rspec-helpers (0.2a)
       capybara (>= 3.24)
       rspec (~> 3.0)
       rspec-expectations
