@@ -1,0 +1,17 @@
+name: Publish
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag
+        required: true
+jobs:
+  publish:
+    name: Publish to RubyGems.org and GitHub Packages
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Publish gem
+        uses: dawidd6/action-publish-gem@v1
+        with:
+          api_key: ${{ secrets.RUBYGEMS_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
