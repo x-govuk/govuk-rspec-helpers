@@ -6,8 +6,8 @@ order: 1
 
 ## Requirements
 
-* Ruby
-* RSpec
+* Ruby (3.1.0 or above)
+* RSpec (3.0 or above)
 
 ## Installation
 
