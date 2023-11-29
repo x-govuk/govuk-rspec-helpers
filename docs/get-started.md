@@ -11,10 +11,13 @@ order: 1
 
 ## Installation
 
-Install the gem by adding it to your `Gemfile`:
+Install the gem by adding it to your `Gemfile` within the `test` group:
 
-```bash
-gem install govuk-rspec-helpers
+```Gemfile
+group :test do
+  # Other gems used for testing
+  gem "govuk-rspec-helpers"
+end
 ```
 
 ## Setup
