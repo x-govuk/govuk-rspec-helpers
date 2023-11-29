@@ -60,12 +60,21 @@ module GovukRSpecHelpers
           link = error_message_item.all(:link).first
 
           if link
-            link_fragment = link[:href].split('#').last
+            uri = URI(link[:href])
 
-            link_target= html.all(id: link_fragment).first || html.all(:field, name: link_fragment).first
+            # If the link is a fragment (href=#name) link, check that
+            # it actually links to a field on the page.
+            if uri.fragment && uri.path == ""
+              link_target = html.all(:field, id: uri.fragment).first || html.all(:field, name: uri.fragment).first
 
-            link_target
+              link_target
+            else
+              # Skip - error summary links to another page
+              true
+            end
+
           else
+            # No links found
             false
           end
         end

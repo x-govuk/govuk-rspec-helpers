@@ -223,4 +223,38 @@ RSpec.describe "summarise errors matcher" do
       }.to fail_with("Error message ‘Enter your full name’ links to #full-name but no input field has this ID or name")
     end
   end
+
+  # This allows for a less-common pattern where the error summary
+  # is used on a page, but to summarise errors in form fields on a
+  # separate page.
+  context "where the errors are linked to a another page" do
+
+    let(:html) { '
+    <title>Error: Your details</title>
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="/name">Enter your full name</a>
+            </li>
+            <li>
+              <a href="/nationality">Select if you are British, Irish or a citizen of a different country</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>'}
+
+    it "should pass if all errors listed" do
+      expect(html).to summarise_errors([
+        "Enter your full name",
+        "Select if you are British, Irish or a citizen of a different country"
+      ])
+    end
+  end
+
 end
