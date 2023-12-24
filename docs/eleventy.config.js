@@ -3,8 +3,6 @@ const govukEleventyPlugin = require('@x-govuk/govuk-eleventy-plugin')
 module.exports = function(eleventyConfig) {
   // Register the plugin
   eleventyConfig.addPlugin(govukEleventyPlugin, {
-    brandColour: '#28a',
-    fontFamily: 'system-ui, sans-serif',
     icons: {
       mask: 'https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-mask-icon.svg?raw=true',
       shortcut: 'https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-favicon.ico',
@@ -16,12 +14,9 @@ module.exports = function(eleventyConfig) {
       url: 'https://x-govuk.github.io/#projects',
       name: 'X-GOVUK projects'
     },
-    url: process.env.GITHUB_ACTIONS
-      ? 'https://x-govuk.github.io/govuk-rspec-helpers/'
-      : '/',
+    url: process.env.GITHUB_ACTIONS && 'https://x-govuk.github.io/govuk-rspec-helpers/',
     header: {
-      organisationLogo: 'x-govuk',
-      organisationName: 'X-GOVUK',
+      logotype: 'x-govuk',
       productName: 'RSpec Helpers',
       search: {
         indexPath: '/search.json',
@@ -34,9 +29,6 @@ module.exports = function(eleventyConfig) {
       },
       copyright: {
         text: '© X-GOVUK'
-      },
-      meta: {
-        items: []
       }
     }
   })
@@ -52,8 +44,6 @@ module.exports = function(eleventyConfig) {
       // Use layouts from the plugin
       layouts: 'node_modules/@x-govuk/govuk-eleventy-plugin/layouts'
     },
-    pathPrefix: process.env.GITHUB_ACTIONS
-      ? '/govuk-rspec-helpers/'
-      : '/'
+    pathPrefix: process.env.GITHUB_ACTIONS && '/govuk-rspec-helpers/'
   }
 };
