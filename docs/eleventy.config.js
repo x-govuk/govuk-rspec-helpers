@@ -1,49 +1,62 @@
-const govukEleventyPlugin = require('@x-govuk/govuk-eleventy-plugin')
+import { govukEleventyPlugin } from "@x-govuk/govuk-eleventy-plugin";
 
-module.exports = function(eleventyConfig) {
+const serviceName = "GOV.UK RSpec Helpers";
+
+export default function (eleventyConfig) {
   // Register the plugin
   eleventyConfig.addPlugin(govukEleventyPlugin, {
     icons: {
-      mask: 'https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-mask-icon.svg?raw=true',
-      shortcut: 'https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-favicon.ico',
-      touch: 'https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-apple-touch-icon.png'
+      mask: "https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-icon-mask.svg?raw=true",
+      shortcut:
+        "https://raw.githubusercontent.com/x-govuk/logo/main/images/favicon.ico",
+      touch:
+        "https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-icon-180.png",
     },
-    opengraphImageUrl: 'https://x-govuk.github.io/govuk-rspec-helpers/assets/opengraph-image.png',
-    homeKey: 'GOV.UK RSpec Helpers',
-    parentSite: {
-      url: 'https://x-govuk.github.io/#projects',
-      name: 'X-GOVUK projects'
-    },
-    url: process.env.GITHUB_ACTIONS && 'https://x-govuk.github.io/govuk-rspec-helpers/',
+    opengraphImageUrl:
+      "https://x-govuk.github.io/govuk-rspec-helpers/assets/opengraph-image.png",
+    themeColor: "#2288aa",
+    titleSuffix: serviceName,
+    homeKey: serviceName,
+    showBreadcrumbs: false,
+    headingPermalinks: true,
+    url:
+      process.env.GITHUB_ACTIONS &&
+      "https://x-govuk.github.io/govuk-rspec-helpers/",
+    stylesheets: ["/assets/application.css"],
     header: {
-      logotype: 'x-govuk',
-      productName: 'RSpec Helpers',
+      homepageUrl: "https://x-govuk.github.io",
+    },
+    serviceNavigation: {
+      serviceName,
+      serviceUrl: process.env.GITHUB_ACTIONS
+        ? "/govuk-prototype-components/"
+        : "/",
       search: {
-        indexPath: '/search.json',
-        sitemapPath: '/sitemap'
-      }
+        indexPath: "/search.json",
+        sitemapPath: "/sitemap",
+      },
     },
     footer: {
       contentLicence: {
-        html: 'Licensed under the <a class="govuk-footer__link" href="https://github.com/x-govuk/govuk-prototype-components/blob/main/LICENSE.txt">MIT Licence</a>, except where otherwise stated'
+        html: 'Licensed under the <a class="govuk-footer__link" href="https://github.com/x-govuk/govuk-prototype-components/blob/main/LICENSE.txt">MIT Licence</a>, except where otherwise stated',
       },
       copyright: {
-        text: '© X-GOVUK'
-      }
-    }
-  })
+        text: "© X-GOVUK",
+      },
+    },
+    rebrand: true,
+  });
 
   // Passthrough
-  eleventyConfig.addPassthroughCopy('./assets')
+  eleventyConfig.addPassthroughCopy("./assets");
+
+  // Enable X-GOVUK brand
+  eleventyConfig.addNunjucksGlobal("xGovuk", true);
 
   return {
-    dataTemplateEngine: 'njk',
-    htmlTemplateEngine: 'njk',
-    markdownTemplateEngine: 'njk',
-    dir: {
-      // Use layouts from the plugin
-      layouts: 'node_modules/@x-govuk/govuk-eleventy-plugin/layouts'
-    },
-    pathPrefix: process.env.GITHUB_ACTIONS && '/govuk-rspec-helpers/'
-  }
-};
+    dataTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
+    pathPrefix: process.env.GITHUB_ACTIONS && "/govuk-rspec-helpers/",
+  };
+}
