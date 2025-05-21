@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/x-govuk/govuk-rspec-helpers.git"
+    "url": "git+https://github.com/x-govuk/govuk-rspec-helpers.git"
   },
   "scripts": {
     "build": "eleventy --quiet",
@@ -26,6 +26,6 @@
     "@x-govuk/govuk-eleventy-plugin": "^6.0.0"
   },
   "engines": {
-    "node": "^18"
+    "node": ">=22"
   }
 }
