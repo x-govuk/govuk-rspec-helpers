@@ -44,7 +44,6 @@ export default function (eleventyConfig) {
         text: "© X-GOVUK",
       },
     },
-    rebrand: true,
   });
 
   // Passthrough
