@@ -5,6 +5,19 @@ const serviceName = "GOV.UK RSpec Helpers";
 export default function (eleventyConfig) {
   // Register the plugin
   eleventyConfig.addPlugin(govukEleventyPlugin, {
+    footer: {
+      contentLicence: {
+        html: 'Licensed under the <a class="govuk-footer__link" href="https://github.com/x-govuk/govuk-prototype-components/blob/main/LICENSE.txt">MIT Licence</a>, except where otherwise stated',
+      },
+      copyright: {
+        text: "© X-GOVUK",
+      },
+    },
+    header: {
+      homepageUrl: "https://x-govuk.github.io",
+    },
+    headingPermalinks: true,
+    homeKey: serviceName,
     icons: {
       mask: "https://raw.githubusercontent.com/x-govuk/logo/main/images/x-govuk-icon-mask.svg?raw=true",
       shortcut:
@@ -14,18 +27,6 @@ export default function (eleventyConfig) {
     },
     opengraphImageUrl:
       "https://x-govuk.github.io/govuk-rspec-helpers/assets/opengraph-image.png",
-    themeColor: "#2288aa",
-    titleSuffix: serviceName,
-    homeKey: serviceName,
-    showBreadcrumbs: false,
-    headingPermalinks: true,
-    url:
-      process.env.GITHUB_ACTIONS &&
-      "https://x-govuk.github.io/govuk-rspec-helpers/",
-    stylesheets: ["/assets/application.css"],
-    header: {
-      homepageUrl: "https://x-govuk.github.io",
-    },
     serviceNavigation: {
       serviceName,
       serviceUrl: process.env.GITHUB_ACTIONS
@@ -36,14 +37,13 @@ export default function (eleventyConfig) {
         sitemapPath: "/sitemap",
       },
     },
-    footer: {
-      contentLicence: {
-        html: 'Licensed under the <a class="govuk-footer__link" href="https://github.com/x-govuk/govuk-prototype-components/blob/main/LICENSE.txt">MIT Licence</a>, except where otherwise stated',
-      },
-      copyright: {
-        text: "© X-GOVUK",
-      },
-    },
+    showBreadcrumbs: false,
+    stylesheets: ["/assets/application.css"],
+    themeColor: "#2288aa",
+    titleSuffix: serviceName,
+    url:
+      process.env.GITHUB_ACTIONS &&
+      "https://x-govuk.github.io/govuk-rspec-helpers/",
   });
 
   // Passthrough
