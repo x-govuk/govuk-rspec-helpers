@@ -33,7 +33,7 @@ export default function (eleventyConfig) {
         ? "/govuk-prototype-components/"
         : "/",
       search: {
-        indexPath: "/search.json",
+        indexPath: "/search-index.json",
         sitemapPath: "/sitemap",
       },
     },
