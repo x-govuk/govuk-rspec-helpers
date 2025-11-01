@@ -1,11 +1,11 @@
 {
   "name": "govuk-rspec-helpers-documentation",
   "version": "0.0.1",
-  "description": "Documentation for govuk-rspec-helpers",
+  "description": "Documentation for GOV.UK RSpec Helpers",
   "keywords": [
     "rspec"
   ],
-  "homepage": "https://x-govuk.org/govuk-rspec-helpers/",
+  "homepage": "https://govuk-rspec-helpers.x-govuk.org",
   "bugs": {
     "url": "https://github.com/x-govuk/govuk-rspec-helpers/issues"
   },
