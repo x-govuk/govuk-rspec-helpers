@@ -4,4 +4,4 @@ This gem providers a set of helpers to make it easier to test GOV.UK services us
 
 This is a pre-release. Feedback is welcome.
 
-See [documentation](https://x-govuk.github.io/govuk-rspec-helpers/).
+See [documentation](https://x-govuk.org/govuk-rspec-helpers/).

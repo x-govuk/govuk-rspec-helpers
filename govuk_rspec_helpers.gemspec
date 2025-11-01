@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "RSpec test helpers for GOV.UK services"
   spec.description = ""
-  spec.homepage = "https://x-govuk.github.io"
+  spec.homepage = "https://x-govuk.org"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
