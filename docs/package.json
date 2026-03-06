@@ -9,17 +9,15 @@
   "bugs": {
     "url": "https://github.com/x-govuk/govuk-rspec-helpers/issues"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/x-govuk/govuk-rspec-helpers.git"
   },
+  "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "eleventy --quiet",
     "start": "eleventy --serve --quiet"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
@@ -28,5 +26,7 @@
   "engines": {
     "node": ">=22"
   },
-  "type": "module"
+  "publishConfig": {
+    "access": "public"
+  }
 }
